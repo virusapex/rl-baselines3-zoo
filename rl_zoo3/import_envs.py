@@ -4,6 +4,11 @@ from gym.envs.registration import register
 from rl_zoo3.wrappers import MaskVelocityWrapper
 
 try:
+    import YoubotPole  # pytype: disable=import-error
+except ImportError:
+    YoubotPoleEnv = None
+
+try:
     import pybullet_envs  # pytype: disable=import-error
 except ImportError:
     pybullet_envs = None
