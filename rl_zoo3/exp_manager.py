@@ -594,6 +594,7 @@ class ExperimentManager:
             vec_env_cls=self.vec_env_class,
             vec_env_kwargs=self.vec_env_kwargs,
             monitor_kwargs=self.monitor_kwargs,
+            eval_env=eval_env,
         )
 
         if self.vec_env_wrapper is not None:
