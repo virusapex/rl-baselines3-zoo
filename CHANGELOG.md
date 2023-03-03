@@ -1,22 +1,52 @@
-## Release 1.7.0a2 (WIP)
+## Release 1.8.0a2 (WIP)
+
+### Breaking Changes
+- Upgraded to SB3 >= 1.8.0
+
+### New Features
+- Tuned hyperparameters for RecurrentPPO on Swimmer
+
+### Bug fixes
+- Set ``highway-env`` version to 1.5 and ``setuptools to`` v65.5 for the CI
+- Removed `use_auth_token` for push to hub util
+- Reverted from v3 to v2 for HumanoidStandup, Reacher, InvertedPendulum and InvertedDoublePendulum since they were not part of the mujoco refactoring (see https://github.com/openai/gym/pull/1304)
+- Fixed `gym-minigrid` policy (from `MlpPolicy` to `MultiInputPolicy`)
+
+### Documentation
+
+### Other
+- Added support for `ruff` (fast alternative to flake8) in the Makefile
+- Removed Gitlab CI file
+- Replaced deprecated `optuna.suggest_loguniform(...)` by `optuna.suggest_float(..., log=True)`
+
+## Release 1.7.0 (2023-01-10)
+
+**SB3 v1.7.0, added support for python config files**
 
 ### Breaking Changes
 - `--yaml-file` argument was renamed to `-conf` (`--conf-file`) as now python file are supported too
+- Upgraded to SB3 >= 1.7.0 (changed `net_arch=[dict(pi=.., vf=..)]` to `net_arch=dict(pi=.., vf=..)`)
 
 ### New Features
 - Specifying custom policies in yaml file is now supported (@Rick-v-E)
 - Added ``monitor_kwargs`` parameter
 - Handle the `env_kwargs` of `render:True` under the hood for panda-gym v1 envs in `enjoy` replay to match visualzation behavior of other envs
 - Added support for python config file
+- Tuned hyperparameters for PPO on Swimmer
+- Added ``-tags/--wandb-tags`` argument to ``train.py`` to add tags to the wandb run
+- Added a sb3 version tag to the wandb run
 
 ### Bug fixes
 - Allow `python -m rl_zoo3.cli` to be called directly
-- Fix a bug where custom environments were not found despite passing ``--gym-package`` when using subprocesses
+- Fixed a bug where custom environments were not found despite passing ``--gym-package`` when using subprocesses
+- Fixed TRPO hyperparameters for MinitaurBulletEnv-v0, MinitaurBulletDuckEnv-v0, HumanoidBulletEnv-v0, InvertedDoublePendulumBulletEnv-v0 and InvertedPendulumSwingupBulletEnv
 
 ### Documentation
 
 ### Other
 - `scripts/plot_train.py` plots models such that newer models appear on top of older ones.
+- Added additional type checking using mypy
+- Standardized the use of ``from gym import spaces``
 
 
 ## Release 1.6.3 (2022-10-13)
@@ -62,7 +92,7 @@
 - Upgraded to sb3-contrib >= 1.6.1
 
 ### New Features
-- Added `--yaml-file` argument option for `train.py`to read hyperparameters from custom yaml files (@JohannesUl)
+- Added `--yaml-file` argument option for `train.py` to read hyperparameters from custom yaml files (@JohannesUl)
 
 ### Bug fixes
 - Added `custom_object` parameter on record_video.py (@Affonso-Gui)
@@ -187,6 +217,7 @@
 - Upgrade to sb3-contrib >= 1.2.0
 
 ### New Features
+- Added support for Python 3.10
 
 ### Bug fixes
 - Fix `--load-last-checkpoint` (@SammyRamone)
