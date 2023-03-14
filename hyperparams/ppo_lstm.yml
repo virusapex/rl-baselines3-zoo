@@ -63,7 +63,7 @@ PendulumNoVel-v1:
                     activation_fn=nn.ReLU,
                     lstm_hidden_size=64,
                     enable_critic_lstm=True,
-                    net_arch=[dict(pi=[64], vf=[64])]
+                    net_arch=dict(pi=[64], vf=[64])
                   )"
 
 # Tuned
@@ -85,7 +85,7 @@ CartPoleNoVel-v1:
                     activation_fn=nn.ReLU,
                     lstm_hidden_size=64,
                     enable_critic_lstm=True,
-                    net_arch=[dict(pi=[64], vf=[64])]
+                    net_arch=dict(pi=[64], vf=[64])
                   )"
 
 # TO BE TUNED
@@ -121,7 +121,7 @@ MountainCarContinuousNoVel-v0:
   policy_kwargs: "dict(log_std_init=0.0, ortho_init=False,
                        lstm_hidden_size=32,
                        enable_critic_lstm=True,
-                       net_arch=[dict(pi=[64], vf=[64])])"
+                       net_arch=dict(pi=[64], vf=[64]))"
 
 Acrobot-v1:
   normalize: true
@@ -152,7 +152,7 @@ BipedalWalker-v3:
                     activation_fn=nn.ReLU,
                     lstm_hidden_size=64,
                     enable_critic_lstm=True,
-                    net_arch=[dict(pi=[64], vf=[64])]
+                    net_arch=dict(pi=[64], vf=[64])
                   )"
 
 # TO BE TUNED
@@ -177,7 +177,7 @@ BipedalWalkerHardcore-v3:
                     activation_fn=nn.ReLU,
                     lstm_hidden_size=64,
                     enable_critic_lstm=True,
-                    net_arch=[dict(pi=[64], vf=[64])]
+                    net_arch=dict(pi=[64], vf=[64])
                   )"
 
 # Tuned
@@ -197,7 +197,7 @@ LunarLanderNoVel-v2: &lunar-defaults
                     activation_fn=nn.ReLU,
                     lstm_hidden_size=64,
                     enable_critic_lstm=True,
-                    net_arch=[dict(pi=[64], vf=[64])]
+                    net_arch=dict(pi=[64], vf=[64])
                   )"
 
 LunarLanderContinuousNoVel-v2:
@@ -216,7 +216,7 @@ HalfCheetahBulletEnv-v0: &pybullet-defaults
   n_epochs: 10
   policy_kwargs: "dict(ortho_init=False,
                        activation_fn=nn.ReLU,
-                       net_arch=[dict(pi=[], vf=[])],
+                       net_arch=dict(pi=[], vf=[]),
                        enable_critic_lstm=True,
                        lstm_hidden_size=128,
                        )"
@@ -365,7 +365,11 @@ Ant-v3: &mujoco-defaults
 Swimmer-v3:
   <<: *mujoco-defaults
   gamma: 0.9999
-
+  n_envs: 4
+  n_steps: 1024
+  batch_size: 256
+  learning_rate: !!float 6e-4
+  gae_lambda: 0.98
 
 # 10 mujoco envs
 
@@ -388,7 +392,7 @@ HalfCheetah-v3:
                     log_std_init=-2,
                     ortho_init=False,
                     activation_fn=nn.ReLU,
-                    net_arch=[dict(pi=[256, 256], vf=[256, 256])]
+                    net_arch=dict(pi=[256, 256], vf=[256, 256])
                   )"
 
 # Ant-v3:
@@ -426,10 +430,10 @@ Hopper-v3:
                     log_std_init=-2,
                     ortho_init=False,
                     activation_fn=nn.ReLU,
-                    net_arch=[dict(pi=[256, 256], vf=[256, 256])]
+                    net_arch=dict(pi=[256, 256], vf=[256, 256])
                   )"
 
-HumanoidStandup-v3:
+HumanoidStandup-v2:
   normalize: true
   n_envs: 1
   policy: 'MlpLstmPolicy'
@@ -448,7 +452,7 @@ HumanoidStandup-v3:
                     log_std_init=-2,
                     ortho_init=False,
                     activation_fn=nn.ReLU,
-                    net_arch=[dict(pi=[256, 256], vf=[256, 256])]
+                    net_arch=dict(pi=[256, 256], vf=[256, 256])
                   )"
 
 Humanoid-v3:
@@ -470,10 +474,10 @@ Humanoid-v3:
                     log_std_init=-2,
                     ortho_init=False,
                     activation_fn=nn.ReLU,
-                    net_arch=[dict(pi=[256, 256], vf=[256, 256])]
+                    net_arch=dict(pi=[256, 256], vf=[256, 256])
                   )"
 
-InvertedDoublePendulum-v3:
+InvertedDoublePendulum-v2:
   normalize: true
   n_envs: 1
   policy: 'MlpLstmPolicy'
@@ -489,7 +493,7 @@ InvertedDoublePendulum-v3:
   max_grad_norm: 0.5
   vf_coef: 0.695929
 
-InvertedPendulum-v3:
+InvertedPendulum-v2:
   normalize: true
   n_envs: 1
   policy: 'MlpLstmPolicy'
@@ -505,7 +509,7 @@ InvertedPendulum-v3:
   max_grad_norm: 0.3
   vf_coef: 0.19816
 
-Reacher-v3:
+Reacher-v2:
   normalize: true
   n_envs: 1
   policy: 'MlpLstmPolicy'
@@ -540,7 +544,7 @@ Reacher-v3:
 #                     log_std_init=-2,
 #                     ortho_init=False,
 #                     activation_fn=nn.ReLU,
-#                     net_arch=[dict(pi=[256, 256], vf=[256, 256])]
+#                     net_arch=dict(pi=[256, 256], vf=[256, 256])
 #                   )"
 
 Walker2d-v3:
