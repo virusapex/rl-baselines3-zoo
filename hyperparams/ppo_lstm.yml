@@ -1,3 +1,29 @@
+#Tuned
+YoubotPole-v0:
+  normalize: true
+  n_envs: 8
+  n_timesteps: !!float 1e6
+  policy: 'MlpLstmPolicy'
+  batch_size: 64
+  n_steps: 128
+  gamma: 0.98
+  gae_lambda: 0.95
+  n_epochs: 20
+  ent_coef: !!float 2.7654090352259112e-08
+  sde_sample_freq: 8
+  max_grad_norm: 0.3
+  vf_coef: 0.678344837637443
+  learning_rate: 0.0012405595349421663
+  use_sde: True
+  clip_range: 0.2
+  policy_kwargs: "dict(ortho_init=True,
+                       activation_fn=nn.Tanh,
+                       net_arch=[dict(pi=[64], vf=[64])],
+                       enable_critic_lstm=True,
+                       lstm_hidden_size=128,
+                       log_std_init=0.7570254810565467,
+                       )"
+
 atari:
   env_wrapper:
     - stable_baselines3.common.atari_wrappers.AtariWrapper:

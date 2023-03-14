@@ -1,23 +1,25 @@
+#Tuned top1
 YoubotPole-v0:
+  normalize: true
   n_envs: 1
   n_timesteps: !!float 2e6
   policy: 'MlpPolicy'
-  batch_size: 64
-  n_steps: 512
-  gamma: 0.99
-  gae_lambda: 0.9
+  batch_size: 16
+  n_steps: 256
+  gamma: 0.999
+  gae_lambda: 0.8
   n_epochs: 20
-  ent_coef: 0.0
-  sde_sample_freq: 4
-  max_grad_norm: 0.5
-  vf_coef: 0.5
-  learning_rate: !!float 3e-5
+  ent_coef: !!float 1.9416900490243964e-06
+  sde_sample_freq: 8
+  max_grad_norm: 0.8
+  vf_coef: 0.6868113695562211
+  learning_rate: 0.006125562816489699
   use_sde: True
   clip_range: 0.4
-  policy_kwargs: "dict(log_std_init=-2,
+  policy_kwargs: "dict(log_std_init=-1.0798487566384753,
                        ortho_init=False,
                        activation_fn=nn.ReLU,
-                       net_arch=[dict(pi=[256, 256], vf=[256, 256])]
+                       net_arch=[dict(pi=[64, 64], vf=[64, 64])]
                        )"
 
 atari:

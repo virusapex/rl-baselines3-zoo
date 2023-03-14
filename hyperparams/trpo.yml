@@ -1,4 +1,25 @@
 # Tuned
+YoubotPole-v0:
+  normalize: true
+  n_envs: 8
+  n_timesteps: !!float 2e6
+  policy: 'MlpPolicy'
+  batch_size: 16
+  n_steps: 256
+  gamma: 0.995
+  gae_lambda: 0.9
+  cg_max_steps: 5
+  n_critic_updates: 10
+  target_kl: 0.005
+  learning_rate: 0.005060349914644839
+  sde_sample_freq: 256
+  policy_kwargs: "dict(log_std_init=0.7263492664506742,
+                    ortho_init=True,
+                    activation_fn=nn.ReLU,
+                    net_arch=[dict(pi=[64, 64], vf=[64, 64])]
+                    )"
+
+# Tuned
 CartPole-v1:
   n_envs: 2
   n_timesteps: !!float 1e5

@@ -1,3 +1,10 @@
+# Untuned
+YoubotPole-v0:
+  n_envs: 1
+  policy: 'MlpPolicy'
+  n_timesteps: !!float 7.5e7
+  normalize: "dict(norm_obs=True, norm_reward=False)"
+  
 # Tuned
 CartPole-v1:
   n_envs: 1
