@@ -7,6 +7,11 @@ try:
     import YoubotPole  # pytype: disable=import-error
 except ImportError:
     YoubotPoleEnv = None
+    
+try:
+    import Gantry  # pytype: disable=import-error
+except ImportError:
+    GantryEnv = None
 
 try:
     import pybullet_envs  # pytype: disable=import-error
