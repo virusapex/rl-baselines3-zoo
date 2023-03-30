@@ -1,0 +1,14 @@
+# Tuned top1
+Gantry-v0:
+  n_timesteps: !!float 1e5
+  n_envs: 2
+  policy: 'MlpPolicy'
+  gamma: 0.9999
+  learning_rate: 0.00011295870254923944
+  batch_size: 1024
+  buffer_size: 1000000
+  learning_starts: 20000
+  train_freq: 4
+  tau: 0.01
+  use_sde: True
+  policy_kwargs: "dict(log_std_init=-2.9822790108873645, net_arch=[256, 256])"

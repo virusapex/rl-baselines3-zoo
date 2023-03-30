@@ -22,27 +22,27 @@ YoubotPole-v0:
                        net_arch=[dict(pi=[64, 64], vf=[64, 64])]
                        )"
 
-#Untuned
+#Tuned top1
 Gantry-v0:
   normalize: true
-  n_envs: 8
+  n_envs: 1
   n_timesteps: !!float 1e6
   policy: 'MlpPolicy'
-  batch_size: 16
-  n_steps: 32
-  gamma: 0.99
-  gae_lambda: 0.9
-  n_epochs: 20
-  ent_coef: 0.0
-  sde_sample_freq: 4
-  max_grad_norm: 0.5
-  vf_coef: 0.5
-  learning_rate: !!float 3e-3
+  batch_size: 64
+  n_steps: 256
+  gamma: 0.999
+  gae_lambda: 0.8
+  n_epochs: 10
+  ent_coef: !!float 8.277361191265053e-7
+  sde_sample_freq: 16
+  max_grad_norm: 0.3
+  vf_coef: 0.3589313305001305
+  learning_rate: 0.028820632183085238
   use_sde: True
-  clip_range: 0.4
-  policy_kwargs: "dict(log_std_init=-2,
+  clip_range: 0.3
+  policy_kwargs: "dict(log_std_init=-3.853219705944474,
                        ortho_init=True,
-                       activation_fn=nn.ReLU,
+                       activation_fn=nn.Tanh,
                        net_arch=[dict(pi=[256, 256], vf=[256, 256])]
                        )"
 
